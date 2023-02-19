@@ -60,12 +60,11 @@ function ranger {
 }
 
 bindkey -s '^o' 'ranger\n'
-
-bindkey "^P" history-beginning-search-backward
-bindkey "^N" history-beginning-search-forward
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
 bindkey "^R" history-incremental-search-backward
 
-bindkey "^K" autosuggest-accept
+bindkey "^[[Z" autosuggest-accept
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
