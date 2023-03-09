@@ -10,6 +10,7 @@ vim.opt.cursorline = true
 vim.opt.mouse = "a"
 vim.opt.showmode = true
 vim.opt.swapfile = false
+vim.opt.undofile = true
 
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.underline = false
