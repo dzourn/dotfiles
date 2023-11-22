@@ -8,7 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="mhtsos"
+
+## STOP: remove git
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,12 +72,11 @@ ZSH_THEME="mhtsos"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#
-# sudo apt install zsh-autosuggestions zsh-syntax-highlighting ranger
-# git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-# git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
-plugins=(git fast-syntax-highlighting zsh-autosuggestions)
+plugins=(git 
+         zsh-autosuggestions 
+         zsh-syntax-highlighting
+         vi-mode
+        )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,5 +105,49 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+bindkey '^I'   complete-word
+bindkey '^[[Z' autosuggest-accept
 
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+###############################################################################
+# vi mode
+# bindkey -v
+export KEYTIMEOUT=1
+
+# Change cursor shape for different vi modes.
+#function zle-keymap-select {
+#  if [[ ${KEYMAP} == vicmd ]] ||
+#     [[ $1 = 'block' ]]; then
+#    echo -ne '\e[1 q'
+#  elif [[ ${KEYMAP} == main ]] ||
+#       [[ ${KEYMAP} == viins ]] ||
+#       [[ ${KEYMAP} = '' ]] ||
+#       [[ $1 = 'beam' ]]; then
+#    echo -ne '\e[5 q'
+#  fi
+#}
+#zle -N zle-keymap-select
+#zle-line-init() {
+#    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#    echo -ne "\e[5 q"
+#}
+#zle -N zle-line-init
+#echo -ne '\e[5 q' # Use beam shape cursor on startup.
+#preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+bindkey -M vicmd '-' end-of-line
+export VI_MODE_SET_CURSOR=true
+###############################################################################
+#function to copy contents of file to clipboard
+fxclip(){
+  xclip -sel c < $1;
+};
+
+alias stm32cubeide="/opt/st/stm32cubeide_1.13.2/stm32cubeide"
+
+export RISCV=/home/dimitris/gits/keystone/riscv64
+export PATH=/home/dimitris/gits/keystone/riscv64/bin:$PATH
+export KEYSTONE_SDK_DIR=/home/dimitris/gits/keystone/sdk/build64

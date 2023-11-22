@@ -1,3 +1,9 @@
+-- Read the docs: https://www.lunarvim.org/docs/configuration
+-- Example configs: https://github.com/LunarVim/starter.lvim
+-- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
+-- Forum: https://www.reddit.com/r/lunarvim/
+-- Discord: https://discord.com/invite/Xb9B4Ny
+
 --[[
  THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
  `lvim` is the global options object
@@ -10,10 +16,9 @@ vim.opt.cursorline = true
 vim.opt.mouse = "a"
 vim.opt.showmode = true
 vim.opt.swapfile = false
-vim.opt.undofile = true
+vim.diagnostic.config({ virtual_text = false })
 
-lvim.lsp.diagnostics.virtual_text = false
-lvim.lsp.diagnostics.underline = false
+lvim.builtin.lualine.style = "default"
 
 -- general
 lvim.log.level = "info"
@@ -28,30 +33,28 @@ lvim.format_on_save = {
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
-
-lvim.keys.insert_mode["<C-e>"] = "<C-o>$"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["-"] = "$"
 lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
 lvim.keys.visual_mode["-"] = "$"
-lvim.keys.normal_mode["<C-o>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<C-p>"] = ":BufferLineCycleNext<CR>"
-
+lvim.keys.insert_mode["C-e"] = "<C-o>$"
+lvim.keys.normal_mode["<C-o>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<C-p>"] = ":BufferLineCyclePrev<CR>"
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
---lvim.colorscheme = "lunar"
+-- lvim.colorscheme = "lunar"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+-- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
-lvim.builtin.project.manual_mode = true
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
