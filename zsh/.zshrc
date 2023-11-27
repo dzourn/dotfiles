@@ -138,7 +138,6 @@ export KEYTIMEOUT=1
 #echo -ne '\e[5 q' # Use beam shape cursor on startup.
 #preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-bindkey -M vicmd '-' end-of-line
 export VI_MODE_SET_CURSOR=true
 ###############################################################################
 #function to copy contents of file to clipboard

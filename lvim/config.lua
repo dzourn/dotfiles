@@ -16,7 +16,9 @@ vim.opt.cursorline = true
 vim.opt.mouse = "a"
 vim.opt.showmode = true
 vim.opt.swapfile = false
+vim.opt.termguicolors = true
 vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ underline = false })
 
 lvim.builtin.lualine.style = "default"
 
@@ -28,7 +30,7 @@ lvim.format_on_save = {
   timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
+lvim.use_icons = false
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
@@ -37,9 +39,9 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["-"] = "$"
 lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
 lvim.keys.visual_mode["-"] = "$"
-lvim.keys.insert_mode["C-e"] = "<C-o>$"
-lvim.keys.normal_mode["<C-o>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<C-p>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.insert_mode["<C-e>"] = "<C-o>$"
+lvim.keys.normal_mode["<C-o>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<C-p>"] = ":BufferLineCycleNext<CR>"
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
@@ -47,7 +49,6 @@ lvim.keys.normal_mode["<C-p>"] = ":BufferLineCyclePrev<CR>"
 
 -- -- Change theme settings
 -- lvim.colorscheme = "lunar"
-
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
