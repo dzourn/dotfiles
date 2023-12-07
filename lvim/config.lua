@@ -19,6 +19,8 @@ vim.opt.swapfile = false
 vim.opt.termguicolors = true
 vim.diagnostic.config({ virtual_text = false })
 vim.diagnostic.config({ underline = false })
+vim.opt.wrap = true
+vim.opt.relativenumber = true
 
 lvim.builtin.lualine.style = "default"
 
@@ -30,7 +32,7 @@ lvim.format_on_save = {
   timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
-lvim.use_icons = false
+-- lvim.use_icons = false
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
@@ -109,12 +111,16 @@ lvim.builtin.treesitter.auto_install = true
 -- }
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+  --  {
+  --    "folke/trouble.nvim",
+  --    cmd = "TroubleToggle",
+  --  },
+  {
+    "jeffkreeftmeijer/vim-numbertoggle",
+
+  }
+}
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
 -- vim.api.nvim_create_autocmd("FileType", {
